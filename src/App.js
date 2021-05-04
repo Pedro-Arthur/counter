@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+export default function App() {
+
+  const [number, setNumber] = useState(0);
+
+  function increase() {
+    setNumber(number + 1);
+  }
+
+  function decrease() {
+    if (number === 0) {
+      return;
+    }
+    else {
+      setNumber(number - 1);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Container">
+      <div className="Card">
+        <h4 className="Number">{number}</h4>
+        <button className="IncreaseButton" onClick={() => increase()}>Aumentar</button>
+        <button className="DecreaseButton" onClick={() => decrease()}>Diminuir</button>
+      </div>
     </div>
   );
 }
-
-export default App;
